@@ -83,7 +83,7 @@
                 <ImageView
                     android:layout_width="160dp"
                     android:layout_height="150dp"
-                    android:id="@+id/imageView"
+                    android:id="@+id/flowers"
                     android:layout_weight="1"
                     android:src="@drawable/state"
                     android:layout_gravity="right|center_vertical"
@@ -102,6 +102,15 @@
                     android:text="TREE"
                     android:layout_gravity="center_horizontal">
                 </TextView>
+
+                <ImageView
+                    android:layout_width="160dp"
+                    android:layout_height="150dp"
+                    android:id="@+id/tree"
+                    android:layout_weight="1"
+                    android:src="@drawable/state"
+                    android:layout_gravity="right|center_vertical"
+                    android:alpha="0.4"/>
             </FrameLayout>
 
 
@@ -126,6 +135,14 @@
                     android:layout_gravity="center_horizontal">
 
                 </TextView>
+                <ImageView
+                    android:layout_width="160dp"
+                    android:layout_height="150dp"
+                    android:id="@+id/water"
+                    android:layout_weight="1"
+                    android:src="@drawable/state"
+                    android:layout_gravity="right|center_vertical"
+                    android:alpha="0.4"/>
 
             </FrameLayout>
 
@@ -144,6 +161,15 @@
                     android:layout_gravity="center_horizontal">
 
                 </TextView>
+
+                <ImageView
+                    android:layout_width="160dp"
+                    android:layout_height="150dp"
+                    android:id="@+id/cat"
+                    android:layout_weight="1"
+                    android:src="@drawable/state"
+                    android:layout_gravity="right|center_vertical"
+                    android:alpha="0.4"/>
 
             </FrameLayout>
         </TableRow>

@@ -1,5 +1,6 @@
 package com.example.karolina.myfirstapplication;
 
+import android.graphics.Color;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -7,21 +8,63 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class MainActivity extends AppCompatActivity {
-    View imageView;
+
+
+    private Map<Integer, Integer> state = new HashMap<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        imageView = this.findViewById(R.id.imageView);
 
-        imageView.setBackgroundResource(R.drawable.spin_animation);
-        AnimationDrawable frameAnimation = (AnimationDrawable) imageView.getBackground();
-        frameAnimation.start();
+        state.put(1, R.id.flowers);
+        state.put(2,R.id.tree);
+        state.put(3,R.id.water);
+        state.put(4, R.id.cat);
+
+        final MainActivity mainActivity = this;
+
+
+        ImageButton imageButton = (ImageButton)this.findViewById(R.id.imageButton);
+
+
+        imageButton.setOnClickListener(new View.OnClickListener() {
+
+            private int counter = 1;
+            private View imageView;
+
+            @Override
+            public void onClick(View v) {
+                if(imageView != null){
+                    AnimationDrawable background = (AnimationDrawable) imageView.getBackground();
+                    background.stop();
+                    imageView.setBackgroundColor(Color.WHITE);
+                }
+
+                imageView = mainActivity.findViewById(state.get(counter));
+
+                counter++;
+                if (counter > 4){
+                    counter = 1;
+                }
+
+                imageView.setBackgroundResource(R.drawable.spin_animation);
+                AnimationDrawable frameAnimation = (AnimationDrawable) imageView.getBackground();
+                frameAnimation.start();
+
+
+            }
+        });
+
+
         //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         //setSupportActionBar(toolbar);
 
