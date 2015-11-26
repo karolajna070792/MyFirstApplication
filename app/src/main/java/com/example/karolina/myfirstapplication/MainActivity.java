@@ -33,10 +33,10 @@ public class MainActivity extends AppCompatActivity {
         final MainActivity mainActivity = this;
 
 
-        ImageButton imageButton = (ImageButton)this.findViewById(R.id.imageButton);
+        final ImageButton imageButton = (ImageButton)this.findViewById(R.id.imageButton);
 
-
-        imageButton.setOnClickListener(new View.OnClickListener() {
+        imageButton.setOnClickListener(new View.OnClickListener()
+        {
 
             private int counter = 1;
             private View imageView;
@@ -52,7 +52,8 @@ public class MainActivity extends AppCompatActivity {
                 imageView = mainActivity.findViewById(state.get(counter));
 
                 counter++;
-                if (counter > 4){
+                if (counter > 4)
+                {
                     counter = 1;
                 }
 
@@ -62,6 +63,41 @@ public class MainActivity extends AppCompatActivity {
 
 
             }
+
+
+        });
+
+        final ImageButton imageButton3 = (ImageButton)this.findViewById(R.id.imageButton3);
+
+        imageButton3.setOnClickListener(new View.OnClickListener()
+        {
+
+
+            private int counter = 1;
+            private View imageView;
+
+            public void onClick(View v)
+            {
+                if (imageView != null)
+                {
+                    AnimationDrawable background = (AnimationDrawable) imageView.getBackground();
+                    background.stop();
+                    imageView.setBackgroundColor(Color.WHITE);
+                }
+
+                imageView = mainActivity.findViewById(state.get(counter));
+                counter++;
+                if(counter>4)
+                {
+                    counter =1;
+                }
+
+                imageView.setBackgroundResource(R.drawable.spin_animation);
+                AnimationDrawable frameAnimation = (AnimationDrawable) imageView.getBackground();
+                frameAnimation.start();
+
+            }
+
         });
 
 
