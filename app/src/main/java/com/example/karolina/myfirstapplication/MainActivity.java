@@ -17,7 +17,14 @@ import java.util.Map;
 public class MainActivity extends AppCompatActivity {
 
 
+    private class Data{
+        public Integer counter = 1;
+        public View imageView;
+    }
+
+
     private Map<Integer, Integer> state = new HashMap<>();
+    private Data data = new Data();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,48 +41,45 @@ public class MainActivity extends AppCompatActivity {
 
 
         ImageButton imageButton = (ImageButton)this.findViewById(R.id.imageButton);
+        ImageButton imageButton2 = (ImageButton)this.findViewById(R.id.imageButton2);
+        ImageButton imageButton3 = (ImageButton)this.findViewById(R.id.imageButton3);
+        ImageButton imageButton4 = (ImageButton)this.findViewById(R.id.imageButton4);
 
 
-        imageButton.setOnClickListener(new View.OnClickListener() {
 
-            private int counter = 1;
-            private View imageView;
+        View.OnClickListener clickListener = new View.OnClickListener() {
+
+
 
             @Override
             public void onClick(View v) {
-                if(imageView != null){
-                    AnimationDrawable background = (AnimationDrawable) imageView.getBackground();
+                System.out.println(v.getId() == R.id.imageButton);
+                if(data.imageView != null){
+                    AnimationDrawable background = (AnimationDrawable) data.imageView.getBackground();
                     background.stop();
-                    imageView.setBackgroundColor(Color.WHITE);
+                    data.imageView.setBackgroundColor(Color.WHITE);
                 }
 
-                imageView = mainActivity.findViewById(state.get(counter));
+                data.imageView = mainActivity.findViewById(state.get(data.counter));
 
-                counter++;
-                if (counter > 4){
-                    counter = 1;
+                data.counter++;
+                if (data.counter > 4){
+                    data.counter = 1;
                 }
 
-                imageView.setBackgroundResource(R.drawable.spin_animation);
-                AnimationDrawable frameAnimation = (AnimationDrawable) imageView.getBackground();
+                data.imageView.setBackgroundResource(R.drawable.spin_animation);
+                AnimationDrawable frameAnimation = (AnimationDrawable) data.imageView.getBackground();
                 frameAnimation.start();
 
 
             }
-        });
+        };
 
+        imageButton.setOnClickListener(clickListener);
+        imageButton2.setOnClickListener(clickListener);
+        imageButton3.setOnClickListener(clickListener);
+        imageButton4.setOnClickListener(clickListener);
 
-        //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        //setSupportActionBar(toolbar);
-
-        //FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        //fab.setOnClickListener(new View.OnClickListener() {
-        //    @Override
-        //    public void onClick(View view) {
-        //        Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-        //                .setAction("Action", null).show();
-        //    }
-        //});
     }
 
     @Override
