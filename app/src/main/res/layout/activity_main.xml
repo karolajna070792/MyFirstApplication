@@ -22,7 +22,7 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:id="@+id/imageButton3"
-        android:src="@drawable/tree"
+        android:src="@drawable/woda"
         android:layout_alignTop="@+id/imageButton"
         android:layout_toEndOf="@+id/imageButton"
         android:layout_marginStart="47dp" />
@@ -33,7 +33,7 @@
         android:paddingRight="100dp"
         android:paddingLeft="16dp"
         android:id="@+id/imageButton2"
-        android:src="@drawable/woda"
+        android:src="@drawable/tree"
         android:layout_alignParentBottom="true"
         android:layout_toEndOf="@+id/imageButton3"
         android:layout_marginStart="49dp" />

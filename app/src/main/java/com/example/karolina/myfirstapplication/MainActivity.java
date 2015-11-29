@@ -23,7 +23,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    private Map<Integer, Integer> state = new HashMap<>();
+    private final Map<Integer, Integer> state = new HashMap<>();
+    private final Map<Integer, Integer> answers = new HashMap<>();
     private Data data = new Data();
 
     @Override
@@ -31,45 +32,60 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        final MainActivity mainActivity = this;
+        data.imageView = mainActivity.findViewById(R.id.flowers);
+        data.imageView.setBackgroundResource(R.drawable.spin_animation);
+        AnimationDrawable frameAnimation = (AnimationDrawable) data.imageView.getBackground();
+        frameAnimation.start();
 
         state.put(1, R.id.flowers);
-        state.put(2,R.id.tree);
-        state.put(3,R.id.water);
+        state.put(3, R.id.tree);
+        state.put(2, R.id.water);
         state.put(4, R.id.cat);
 
-        final MainActivity mainActivity = this;
-
+        answers.put(1, R.id.imageButton);
+        answers.put(2, R.id.imageButton3);
+        answers.put(3, R.id.imageButton2);
+        answers.put(4, R.id.imageButton4);
 
         ImageButton imageButton = (ImageButton)this.findViewById(R.id.imageButton);
         ImageButton imageButton2 = (ImageButton)this.findViewById(R.id.imageButton2);
         ImageButton imageButton3 = (ImageButton)this.findViewById(R.id.imageButton3);
         ImageButton imageButton4 = (ImageButton)this.findViewById(R.id.imageButton4);
 
-
-
         View.OnClickListener clickListener = new View.OnClickListener() {
-
-
 
             @Override
             public void onClick(View v) {
-                System.out.println(v.getId() == R.id.imageButton);
-                if(data.imageView != null){
-                    AnimationDrawable background = (AnimationDrawable) data.imageView.getBackground();
-                    background.stop();
-                    data.imageView.setBackgroundColor(Color.WHITE);
+
+
+                if(answers.get(data.counter) == v.getId()){
+                    System.out.println("Poprawnie");
+                    if(data.imageView != null){
+                        AnimationDrawable background = (AnimationDrawable) data.imageView.getBackground();
+                        background.stop();
+                        data.imageView.setBackgroundColor(Color.WHITE);
+                    }
+
+                    data.counter++;
+                    if (data.counter > 4){
+                        data.counter = 1;
+                    }
+
+
+                    data.imageView = mainActivity.findViewById(state.get(data.counter));
+
+
+                    data.imageView.setBackgroundResource(R.drawable.spin_animation);
+                    AnimationDrawable frameAnimation = (AnimationDrawable) data.imageView.getBackground();
+                    frameAnimation.start();
+
+                } else {
+                    System.out.println("niepoprawnie");
                 }
 
-                data.imageView = mainActivity.findViewById(state.get(data.counter));
 
-                data.counter++;
-                if (data.counter > 4){
-                    data.counter = 1;
-                }
 
-                data.imageView.setBackgroundResource(R.drawable.spin_animation);
-                AnimationDrawable frameAnimation = (AnimationDrawable) data.imageView.getBackground();
-                frameAnimation.start();
 
 
             }
