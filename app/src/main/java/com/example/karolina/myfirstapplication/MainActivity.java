@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -48,10 +49,31 @@ public class MainActivity extends AppCompatActivity {
         answers.put(3, R.id.imageButton2);
         answers.put(4, R.id.imageButton4);
 
-        ImageButton imageButton = (ImageButton)this.findViewById(R.id.imageButton);
+        final ImageButton imageButton = (ImageButton)this.findViewById(R.id.imageButton);
         ImageButton imageButton2 = (ImageButton)this.findViewById(R.id.imageButton2);
         ImageButton imageButton3 = (ImageButton)this.findViewById(R.id.imageButton3);
         ImageButton imageButton4 = (ImageButton)this.findViewById(R.id.imageButton4);
+
+        ImageButton [] images = new ImageButton[4];
+        for(int i=0; i<4; i++)
+        {
+            if(i==0)
+            {
+                images[i]=imageButton;
+            }
+            else if(i==1)
+            {
+                images[i]=imageButton2;
+            }
+            else if(i==2)
+            {
+                images[i]=imageButton3;
+            }
+            else if(i==3)
+            {
+                images[i]=imageButton4;
+            }
+        }
 
         View.OnClickListener clickListener = new View.OnClickListener() {
 
@@ -59,12 +81,17 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 
 
-                if(answers.get(data.counter) == v.getId()){
+                if(answers.get(data.counter) == v.getId())
+                {
                     System.out.println("Poprawnie");
-                    if(data.imageView != null){
+                    if(data.imageView != null)
+                    {
                         AnimationDrawable background = (AnimationDrawable) data.imageView.getBackground();
                         background.stop();
                         data.imageView.setBackgroundColor(Color.WHITE);
+                        data.imageView.setBackgroundResource(R.drawable.woda);
+
+
                     }
 
                     data.counter++;
