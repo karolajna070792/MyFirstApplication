@@ -60,12 +60,26 @@
         android:layout_marginBottom="51dp"
         android:id="@+id/textView" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="wrong answer!"
+        android:id="@+id/textView5"
+        android:textColor="#e91919"
+        android:textStyle="bold"
+        android:textSize="30dp"
+        android:layout_alignWithParentIfMissing="false"
+        android:layout_above="@+id/imageButton3"
+        android:layout_toStartOf="@+id/imageButton4" />
+
     <TableLayout
 
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:stretchColumns="4"
-        android:layout_above="@+id/textView">
+        android:layout_above="@+id/textView"
+        android:id="@+id/tableLayout">
 
         <TableRow android:orientation="horizontal">
 
@@ -176,6 +190,8 @@
 
 
     </TableLayout>
+
+
 
 
 </RelativeLayout>

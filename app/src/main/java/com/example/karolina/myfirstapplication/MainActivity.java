@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -61,6 +62,10 @@ public class MainActivity extends AppCompatActivity {
         ImageButton imageButton3 = (ImageButton)this.findViewById(R.id.imageButton3);
         ImageButton imageButton4 = (ImageButton)this.findViewById(R.id.imageButton4);
 
+        final 
+        TextView napis = (TextView)findViewById(R.id.textView5);
+        napis.setVisibility(View.INVISIBLE);
+
 
 
         View.OnClickListener clickListener = new View.OnClickListener() {
@@ -85,7 +90,8 @@ public class MainActivity extends AppCompatActivity {
         }
 
         data.counter++;
-        if (data.counter > 4) {
+        if (data.counter > 4)
+        {
             data.counter = 1;
         }
 
@@ -98,6 +104,8 @@ public class MainActivity extends AppCompatActivity {
         frameAnimation.start();
 
     } else {
+
+        napis.setVisibility(View.VISIBLE);
         System.out.println("niepoprawnie");
     }
 
