@@ -19,7 +19,7 @@ import java.util.Map;
 public class MainActivity extends AppCompatActivity {
 
 
-    private class Data{
+    private class Data {
         public Integer counter = 1;
         public View imageView;
     }
@@ -54,18 +54,17 @@ public class MainActivity extends AppCompatActivity {
         fields.put(1, R.drawable.images);
         fields.put(2, R.drawable.woda);
         fields.put(3, R.drawable.tree);
-        fields.put(4,R.drawable.kot);
+        fields.put(4, R.drawable.kot);
 
 
-        final ImageButton imageButton = (ImageButton)this.findViewById(R.id.imageButton);
-        ImageButton imageButton2 = (ImageButton)this.findViewById(R.id.imageButton2);
-        ImageButton imageButton3 = (ImageButton)this.findViewById(R.id.imageButton3);
-        ImageButton imageButton4 = (ImageButton)this.findViewById(R.id.imageButton4);
+        final ImageButton imageButton = (ImageButton) this.findViewById(R.id.imageButton);
+        ImageButton imageButton2 = (ImageButton) this.findViewById(R.id.imageButton2);
+        ImageButton imageButton3 = (ImageButton) this.findViewById(R.id.imageButton3);
+        ImageButton imageButton4 = (ImageButton) this.findViewById(R.id.imageButton4);
 
-        final 
-        TextView napis = (TextView)findViewById(R.id.textView5);
+        final
+        TextView napis = (TextView) findViewById(R.id.textView5);
         napis.setVisibility(View.INVISIBLE);
-
 
 
         View.OnClickListener clickListener = new View.OnClickListener() {
@@ -73,44 +72,45 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-
-    if (answers.get(data.counter) == v.getId())
-    {
-        System.out.println("Poprawnie");
-        if (data.imageView != null)
-        {
-            AnimationDrawable background = (AnimationDrawable) data.imageView.getBackground();
-            background.stop();
+                napis.setVisibility(View.INVISIBLE);
+                if (answers.get(data.counter) == v.getId()) {
+                    System.out.println("Poprawnie");
+                    if (data.imageView != null) {
+                        AnimationDrawable background = (AnimationDrawable) data.imageView.getBackground();
+                        background.stop();
 
 
-            data.imageView.setBackgroundColor(Color.WHITE);
+                        data.imageView.setBackgroundColor(Color.WHITE);
 
-            data.imageView.setBackgroundResource(fields.get(data.counter));
+                        data.imageView.setBackgroundResource(fields.get(data.counter));
 
-        }
+                    }
 
-        data.counter++;
-        if (data.counter > 4)
-        {
-            data.counter = 1;
-        }
-
-
-        data.imageView = mainActivity.findViewById(state.get(data.counter));
-
-
-        data.imageView.setBackgroundResource(R.drawable.spin_animation);
-        AnimationDrawable frameAnimation = (AnimationDrawable) data.imageView.getBackground();
-        frameAnimation.start();
-
-    } else {
-
-        napis.setVisibility(View.VISIBLE);
-        System.out.println("niepoprawnie");
-    }
+                    data.counter++;
+                    if (data.counter > 4) {
+                        data.counter = 1;
+                        napis.setText("The End!");
+                        napis.setVisibility(View.VISIBLE);
+                    } else {
+                        data.imageView = mainActivity.findViewById(state.get(data.counter));
 
 
-        }
+                        data.imageView.setBackgroundResource(R.drawable.spin_animation);
+                        AnimationDrawable frameAnimation = (AnimationDrawable) data.imageView.getBackground();
+                        frameAnimation.start();
+                    }
+
+
+
+
+                } else {
+
+                    napis.setVisibility(View.VISIBLE);
+                    System.out.println("niepoprawnie");
+                }
+
+
+            }
 
 
         };
